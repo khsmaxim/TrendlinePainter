@@ -1,0 +1,36 @@
+<div>
+  <canvas #domCanvas (mousedown)="mousedown($event)" (mousemove)="mousemove($event)" (mouseup)="mouseup($event)" (mouseout)="mouseout($event)"></canvas>
+  <ng-template #cogContent>
+    <app-axis-form [(iaxies)]="iaxies" (onReset)="resetIAxis()" (onApply)="applyIAxis(iaxies)"></app-axis-form>
+  </ng-template>
+  <section *ngIf="!currBookmark.isNew">
+    <section>
+      <button type="button" class="btn btn-outline-dark btn-sm" #cogPopover="ngbPopover" [ngbPopover]="cogContent" popoverTitle="Setup axis" placement="top-start" popoverClass="cog-popover" [autoClose]="'outside'"><i class="fas fa-cog"></i></button>
+      <button type="button" class="btn btn-outline-dark btn-sm" (click)="reset()" [disabled]="!(hasChart && !isPlaying)"><i class="fas fa-eraser"></i></button>
+      <button type="button" class="btn btn-outline-dark btn-sm" (click)="newBookmark()" [disabled]="!(hasChart && !isPlaying)">
+        <i *ngIf="currBookmark.isId" class="fas fa-bookmark"></i>
+        <i *ngIf="!currBookmark.isId" class="far fa-bookmark"></i>
+      </button>
+      <button type="button" class="btn btn-outline-dark btn-sm" (click)="showBookmarks()" [disabled]="isPlaying"><i class="fas fa-archive"></i></button>
+    </section>
+    <section>
+      <button type="button" class="btn btn-outline-dark btn-sm" (click)="step(0)" [disabled]="!(hasChart && !isPlaying)"><i class="fas fa-backward"></i></button>
+      <button type="button" class="btn btn-outline-dark btn-sm" (click)="step(currCandle - 1)" [disabled]="!(hasChart && !isPlaying)"><i class="fas fa-step-backward"></i></button>
+      <button type="button" class="btn btn-outline-dark btn-sm" (click)="release()"  [disabled]="!hasChart"><i class="fas" [ngClass]="{'fa-play': !isPlaying, 'fa-stop': isPlaying}"></i></button>
+      <div class="input-group">
+        <input class="form-control form-control-sm" type="number" [min]="MIN_CANDLES" [max]="MAX_CANDLES" [(ngModel)]="currCandle" (change)="onChangePoint($event)" [disabled]="!(hasChart && !isPlaying)" />
+        <!--span class="input-group-text" id="basic-addon2">of {{MAX_CANDLES}}</span-->
+        <sub>of <b>{{MAX_CANDLES}}</b></sub>
+      </div>
+      <button type="button" class="btn btn-outline-dark btn-sm" (click)="step(currCandle + 1)" [disabled]="!(hasChart && !isPlaying)"><i class="fas fa-step-forward"></i></button>
+      <button type="button" class="btn btn-outline-dark btn-sm" (click)="step(MAX_CANDLES)" [disabled]="!(hasChart && !isPlaying)"><i class="fas fa-forward"></i></button>
+    </section>
+  </section>
+  <section *ngIf="currBookmark.isNew">
+    <section>
+      <input class="form-control form-control-sm" type="text" [(ngModel)]="currBookmark.name" placeholder="Bookmark name" />
+      <button type="button" class="btn btn-outline-dark btn-sm" (click)="saveBookmark()"><i class="fas fa-bookmark"></i></button>
+      <button type="button" class="btn btn-outline-dark btn-sm" (click)="cancelBookmark()"><i class="fas fa-times"></i></button>
+    </section>
+  </section>
+</div>

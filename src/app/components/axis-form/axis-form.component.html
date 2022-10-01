@@ -1,0 +1,76 @@
+<form [formGroup]="axisForm" (ngSubmit)="onSubmit()" class="panel">
+  <div class="inputs">
+    <div class="layout">
+      <h4>Layout</h4>
+      <div>
+        <h4>Time axis:</h4>
+        <div>
+          <label for="timeAxisWidth">width (px)</label>
+          <div>
+            <input type="number" id="timeAxisWidth" name="timeAxisWidth" formControlName="timeAxisWidth" [ngClass]="{ 'is-invalid': submitted && controls['timeAxisWidth'].errors }" class="form-control form-control-sm"  />
+            <div *ngIf="submitted && controls['timeAxisWidth'].errors" class="invalid-feedback">
+              <div *ngIf="controls['timeAxisWidth'].errors['required']">Required</div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <label for="timeAxisCell">cell (px)</label>
+          <div>
+            <input type="number" id="timeAxisCell" name="timeAxisCell" formControlName="timeAxisCell" [ngClass]="{ 'is-invalid': submitted && controls['timeAxisCell'].errors }" class="form-control form-control-sm" />
+            <div *ngIf="submitted && controls['timeAxisCell'].errors" class="invalid-feedback">
+              <div *ngIf="controls['timeAxisCell'].errors['required']">Required</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <h4>Price axis:</h4>
+        <div>
+          <label for="priceAxisHeight">height (px)</label>
+          <div>
+            <input type="number" id="priceAxisHeight" name="priceAxisHeight" formControlName="priceAxisHeight" [ngClass]="{ 'is-invalid': submitted && controls['priceAxisHeight'].errors }" class="form-control form-control-sm" />
+            <div *ngIf="submitted && controls['priceAxisHeight'].errors" class="invalid-feedback">
+              <div *ngIf="controls['priceAxisHeight'].errors['required']">Required</div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <label for="priceAxisCell">cell (px)</label>
+          <div>
+            <input type="number" id="priceAxisCell" name="priceAxisCell" formControlName="priceAxisCell" [ngClass]="{ 'is-invalid': submitted && controls['priceAxisCell'].errors }" class="form-control form-control-sm" />
+            <div *ngIf="submitted && controls['priceAxisCell'].errors" class="invalid-feedback">
+              <div *ngIf="controls['priceAxisCell'].errors['required']">Required</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="candle">
+      <h4>Candle</h4>
+      <div>
+        <div>
+          <label for="candleWidth">width (px)</label>
+          <div>
+            <input type="number" id="candleWidth" name="candleWidth" formControlName="candleWidth" [ngClass]="{ 'is-invalid': submitted && controls['candleWidth'].errors }" class="form-control form-control-sm" />
+            <div *ngIf="submitted && controls['candleWidth'].errors" class="invalid-feedback">
+              <div *ngIf="controls['candleWidth'].errors['required']">Required</div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <label for="candleInterval">interval (min)</label>
+          <div>
+            <input type="number" id="candleInterval" name="candleInterval" formControlName="candleInterval" [ngClass]="{ 'is-invalid': submitted && controls['candleInterval'].errors }" class="form-control form-control-sm" />
+            <div *ngIf="submitted && controls['candleInterval'].errors" class="invalid-feedback">
+              <div *ngIf="controls['candleInterval'].errors['required']">Required</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="buttons">
+    <button type="button" class="btn btn-outline-dark btn-sm" (click)="reset()">Cancel</button>
+    <button type="submit" class="btn btn-outline-dark btn-sm">Apply</button>
+  </div>
+</form>

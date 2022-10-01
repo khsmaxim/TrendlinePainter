@@ -1,0 +1,22 @@
+<div class="modal-header">
+  <h4 class="modal-title">Bookmarks</h4>
+  <button type="button" class="btn-close" aria-label="Close" (click)="cancel()"><i class="fa-solid fa-xmark"></i></button>
+</div>
+<div class="modal-body">
+  <section>
+    <div *ngFor="let item of data | tendlineStorageData" (click)="choose(item.key)" [ngStyle]="{'background-image':'url('+ item.value.screenshot +')'}">
+      <div class="info">
+        <div class="name">{{ item.value.name }}</div>
+        <div class="size">
+          {{item.value.axies.time.candle.duration}}{{item.value.axies.time.cell.suffix}} x
+          {{item.value.axies.price.cell.count}}{{item.value.axies.price.cell.suffix}} | {{item.value.axies.time.candle.interval}} ({{item.value.axies.time.candle.size}})px</div>
+        <div class="time">
+          {{item.value.axies.time.width}}px x
+          {{item.value.axies.price.height}}px</div>
+        <div class="time">{{ item.value.time | date:'short' }}</div>
+      </div>
+      <button *ngIf="!item.value.template" type="button" class="btn btn-outline-dark btn-sm" aria-label="delete" (click)="delete($event, item.key)"><i class="fas fa-trash"></i></button>
+    </div>
+  </section>
+</div>
+

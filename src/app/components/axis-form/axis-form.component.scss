@@ -1,0 +1,64 @@
+:host {
+  h3 {
+    font-size: 13px;
+    text-transform: uppercase;
+  }
+  h4 {
+    font-size: 11px;
+    text-transform: uppercase;
+    margin: 0;
+  }
+  input[type="number"] {
+    max-width: 90px;
+  }
+  label[for] {
+    font-size: 12px;
+  }
+  form {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    gap: 5px;
+    .inputs {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      gap: 15px;
+      .layout, .candle {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        gap: 5px;
+        border: 1px solid #938f8f;
+        border-radius: 5px;
+        padding: 5px;
+      }
+      .layout {
+        > div {
+          display: flex;
+          flex-direction: row;
+          flex-wrap: nowrap;
+          gap: 5px;
+          align-items: center;
+          > * {
+            flex: 1 1 0;
+          }
+        }
+      }
+      .candle {
+        > div {
+          display: flex;
+          flex-direction: column;
+          flex-wrap: nowrap;
+          gap: 5px;
+        }
+      }
+    }
+    .buttons {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      gap: 5px;
+    }
+  }
+}

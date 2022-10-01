@@ -1,0 +1,49 @@
+
+:host {
+  .modal-body {
+    > section {
+      display: flex;
+      flex-direction: row;
+      gap: 20px;
+      flex-wrap: wrap;
+      > div {
+        position: relative;
+        // min-width: 300px;
+        flex-basis: 300px;
+        height: 100px;
+        flex-grow: 1;
+        flex-shrink: 0;
+        border: 1px solid #dee2e6;
+        border-radius: 5px;
+        background-repeat: no-repeat;
+        background-position: center;
+        cursor: pointer;
+        &:hover {
+          border-color: #212529;
+        }
+        .info {
+          margin-top: 5px;
+          margin-left: 5px;
+          .name {
+            font-size: 12px;
+            font-style: italic;
+          }
+          .size {
+            font-size: 10px;
+            font-weight: 700;
+            color: #585858;
+          }
+          .time {
+            font-size: 10px;
+            color: #8d8d8d;
+          }
+        }
+        button[aria-label="delete"] {
+          position: absolute;
+          top: 10px;
+          right: 10px;
+        }
+      }
+    }
+  }
+}

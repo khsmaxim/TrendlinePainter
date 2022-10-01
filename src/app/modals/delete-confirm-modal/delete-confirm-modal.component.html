@@ -1,0 +1,9 @@
+<div class="modal-header">
+  <h4 class="modal-title" id="modal-title">Confirm deletion</h4>
+  <button type="button" class="btn-close" aria-label="Close button" aria-describedby="modal-title" (click)="dismiss()"></button>
+</div>
+<div class="modal-body">Are you sure you want to delete?</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-outline-secondary" (click)="dismiss()">Cancel</button>
+  <button type="button" ngbAutofocus class="btn btn-danger" (click)="confirm()">Delete</button>
+</div>
